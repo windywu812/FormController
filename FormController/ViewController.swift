@@ -16,11 +16,13 @@ class ViewController: FormViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Form Controller"
         
-        let tf = FormTextField(label: "Label", placeholder: "Enter some text here")
-        tf.didChange = { [weak self] value in
-            print(value)
-        }
-        addForms(views: tf)
+        (0..<5).forEach({
+            let tf = FormTextField(label: "Label \($0)", placeholder: "Enter some text here")
+            tf.didChange = { [weak self] value in
+                print(value)
+            }
+            addForms(views: tf)
+        })
         
         let picker = FormPicker(label: "Picker", placeholder: "Enter some text here")
         picker.addDataSource(data: ["1", "2", "3", "4"])
